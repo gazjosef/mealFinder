@@ -19,8 +19,8 @@ function searchMeal(e) {
   if (term.trim()) {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}
 `)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
         resultHeading.innerHTML = `<h2>Search results for '${term}':</h2>`;
 
@@ -29,7 +29,7 @@ function searchMeal(e) {
         } else {
           mealsEl.innerHTML = data.meals
             .map(
-              meal => `
+              (meal) => `
             <div class="meal">
               <img src="${meal.strMealThumb}" alt="${meal.strMeal}"/>
               <div class="meal-info" data-mealID="${meal.idMeal}">
@@ -50,3 +50,9 @@ function searchMeal(e) {
 
 // Event listeners
 submit.addEventListener('submit', searchMeal);
+
+mealsEl.addEventListener('click', (e) => {
+  const mealInfo = e.path.find((item) => {
+    console.log(item);
+  });
+});
