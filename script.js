@@ -53,8 +53,25 @@ function getMealById(mealID) {
   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      const meal = data.meals[0];
+
+      addMealToDom(meal);
     });
+}
+
+// Add meal to DOM
+function addMealToDom(meal) {
+  const ingredients = [];
+
+  for (let i = 1; i <= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+      ingredients.push(
+        `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
+      );
+    } else {
+      break;
+    }
+  }
 }
 
 // Event listeners
