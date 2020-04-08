@@ -72,6 +72,11 @@ function addMealToDom(meal) {
       break;
     }
   }
+  single_MealEl.innerHTML = `
+    <div class="single-meal">
+      <h1>${meal.strMeal}</h1>
+    </div>
+  `;
 }
 
 // Event listeners
